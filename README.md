@@ -20,7 +20,8 @@
 
 
 - has_many :purchases
-- 
+- has_many :items
+
 
 ## items テーブル
 
@@ -28,12 +29,12 @@
 | ------              | ------     | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | name                | string     | null: false |
-| version             | text       | null: false                    |
-| category            | integer    | null: false                    |
-| situation           | integer    | null: false                    |
-| delivery_charge     | integer    | null: false                    |
-| delivery_area       | integer    | null: false                    |
-| delivery_days       | integer    | null: false                    |
+| version_id          | text       | null: false                    |
+| category_id         | integer    | null: false                    |
+| situation_id        | integer    | null: false                    |
+| delivery_charge_id  | integer    | null: false                    |
+| delivery_area_id    | integer    | null: false                    |
+| delivery_days_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
 
 
@@ -49,19 +50,20 @@
 | Column              | Type       | Options                        |
 | ------              | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
-| items               | references | null: false, foreign_key: true |
+| item                | references | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 
-## address テーブル
+## addresses テーブル
 
 | Column              | Type       | Options                        |
 | -------             | ---------- | ------------------------------ |
 | post_code           | string     | null: false                    |
-| prefectures         | integer    | null: false                    |
+| prefectures_id      | integer    | null: false                    |
 | municipalities      | string     | null: false                    |
 | house_number        | string     | null: false                    |
 | building_name       | string     |                                |
@@ -71,5 +73,5 @@
 
 ### Association
 
-- has_one_ :item
-- has_one_ :purchase
+
+- belongs_to :purchase
