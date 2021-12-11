@@ -29,7 +29,7 @@
 | ------              | ------     | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | name                | string     | null: false |
-| version_id          | text       | null: false                    |
+| version             | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | situation_id        | integer    | null: false                    |
 | delivery_charge_id  | integer    | null: false                    |
@@ -62,6 +62,7 @@
 
 | Column              | Type       | Options                        |
 | -------             | ---------- | ------------------------------ |
+| purchase            | references | null: false, foreign_key: true |
 | post_code           | string     | null: false                    |
 | prefectures_id      | integer    | null: false                    |
 | municipalities      | string     | null: false                    |
