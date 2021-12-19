@@ -75,7 +75,43 @@ require 'rails_helper'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
-
+      it 'passwordが英語のみでは登録できない' do
+        @user.password = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password には英字と数字の両方を含めて設定してください")
+      end
+      it 'passwordが数字のみでは登録できない' do
+        @user.password = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password には英字と数字の両方を含めて設定してください")
+      end
+      it 'last_nameが全角入力でなければ登録できないこと' do
+        @user.last_name = 'acd'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください")
+      end
+  
+      it 'first_nameが全角入力でなければ登録できないこと' do
+        @user.first_name = 'acd'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+      end
+      it 'last_name_kanaが全角カタカナでなければ登録できないこと' do
+        @user.last_name_kana = 'acd'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana 全角文字を使用してください")
+      end
+  
+      it 'first_name_kanaが全角カタカナでなければ登録できないこと' do
+        @user.first_name_kana = 'acd'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana 全角文字を使用してください")
+      end
+      it 'emailに@がつかないとが登録できない' do
+        @user.email = '123asd'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
     end
    end
   end
