@@ -4,9 +4,10 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :situation
-  belongs_to :delivery_charge_id
-  belongs_to :dlivery_area_id
-  belongs_to :delivery_days_id
+  belongs_to :delivery_charge
+  belongs_to :delivery_area
+  belongs_to :delivery_days
+  has_one_attached :image
 
   validates :name, :version, :price, presence: true
 
