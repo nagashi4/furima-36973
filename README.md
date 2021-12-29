@@ -28,7 +28,7 @@
 | Column              | Type       | Options                        |
 | ------              | ------     | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
-| name                | string     | null: false |
+| name                | string     | null: false                    |
 | version             | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | situation_id        | integer    | null: false                    |
