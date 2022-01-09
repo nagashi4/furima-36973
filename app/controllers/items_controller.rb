@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-   if @item.update(item_params)
+    if @item.update(item_params)
 
       redirect_to action: :show
     else
@@ -39,7 +39,6 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to root_path
   end
-
 
   private
 
@@ -55,6 +54,4 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless current_user.id == @item.user_id
   end
-
-  
 end
