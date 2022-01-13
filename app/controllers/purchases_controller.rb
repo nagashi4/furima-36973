@@ -7,12 +7,15 @@ class PurchasesController < ApplicationController
 
 
   def create
+    
+    @item = Item.find(params[:item_id])
     @purchases_address=PurchasesAddress.new(purchases_params)
     if @purchases_address.valid?
       @purchases_address.save
+      
       redirect_to root_path
     else
-      render :new
+      render :index
     end
     
   end
@@ -21,7 +24,7 @@ class PurchasesController < ApplicationController
 
   def purchases_params
     
-    params.require(:purchases_address).permit(:post_code, :prefecture_id, :municipalities, :house_number, :building_name, :telephone_number).merge(user_id: current_user.id,item_id: params[:item_id])
+    params.require(:purchases_address).permit(:post_code, :delivery_area_id, :municipalities, :house_number, :building_name, :telephone_number).merge(user_id: current_user.id,item_id: params[:item_id])
   end
 
   
