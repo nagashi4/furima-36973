@@ -11,7 +11,7 @@ RSpec.describe PurchasesAddress, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchases_address).to be_valid
       end
-      
+
       it 'building_nameは空でも保存できること' do
         @purchases_address.building_name = ''
         expect(@purchases_address).to be_valid
@@ -48,17 +48,18 @@ RSpec.describe PurchasesAddress, type: :model do
       it 'telephone_numberが空だと保存できないこと' do
         @purchases_address.telephone_number = nil
         @purchases_address.valid?
-        expect(@purchases_address.errors.full_messages).to include("Telephone number can't be blank", "Telephone number is invalid")
+        expect(@purchases_address.errors.full_messages).to include("Telephone number can't be blank",
+                                                                   'Telephone number is invalid')
       end
       it 'telephone_numberが10桁以上11桁以内の数値でないと保存できないこと' do
         @purchases_address.telephone_number = '111'
         @purchases_address.valid?
-        expect(@purchases_address.errors.full_messages).to include("Telephone number is invalid")
+        expect(@purchases_address.errors.full_messages).to include('Telephone number is invalid')
       end
       it 'telephone_numberが半角数値でないと保存できないこと' do
         @purchases_address.telephone_number = '４４４４４４４４９'
         @purchases_address.valid?
-        expect(@purchases_address.errors.full_messages).to include("Telephone number is invalid")
+        expect(@purchases_address.errors.full_messages).to include('Telephone number is invalid')
       end
 
       it 'userが紐付いていないと保存できないこと' do
@@ -66,7 +67,7 @@ RSpec.describe PurchasesAddress, type: :model do
         @purchases_address.valid?
         expect(@purchases_address.errors.full_messages).to include("User can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @purchases_address.token = nil
         @purchases_address.valid?
         expect(@purchases_address.errors.full_messages).to include("Token can't be blank")
