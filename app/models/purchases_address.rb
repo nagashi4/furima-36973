@@ -11,6 +11,8 @@ class PurchasesAddress
     validates :user_id
     validates :delivery_area_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :token
+    validates :item_id
+
   end
 
   validates :delivery_area_id, numericality: { other_than: 0, message: "can't be blank" }
