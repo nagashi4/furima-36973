@@ -10,11 +10,11 @@ class Item < ApplicationRecord
 
   validates :name, :version, :price, :image, presence: true
 
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :situation_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :delivery_charge_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :delivery_area_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :delivery_days_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :situation_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :delivery_charge_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :delivery_area_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :delivery_days_id, numericality: { other_than: 1, message: "を入力してください" }
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   belongs_to :user

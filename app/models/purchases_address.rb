@@ -4,12 +4,12 @@ class PurchasesAddress
                 :user_id, :token
 
   with_options presence: true do
-    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: '半角文字列とハイフンが含まれていること' }
     validates :telephone_number, format: { with: /\A\d{10,11}\z/ }
     validates :municipalities
     validates :house_number
     validates :user_id
-    validates :delivery_area_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :delivery_area_id, numericality: { other_than: 1, message: "を入力してください" }
     validates :token
     validates :item_id
 
